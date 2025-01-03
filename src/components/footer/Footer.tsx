@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-white">
+    <footer className="bg-white border-t-2 rounded-t-[60px] mt-5 md:mt-10">
       <div className="container px-6 py-12 mx-auto">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
           <div className="sm:col-span-2">
