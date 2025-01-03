@@ -4,7 +4,6 @@ import { useState } from "react";
 import useSWR from "swr";
 import axios from "axios";
 import { Table, TableBody, TableCell, TableCaption, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import useAxios from "@/hooks/useAxios";
