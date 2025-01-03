@@ -7,17 +7,18 @@ import useToast from "@/hooks/useToast";
 
 export interface User {
   id: string;
+  role: "user" | "admin";
   name: string;
-  email: string;
+  email?: string;
+  phone?: string;
   imageURL?: string;
-  role: "admin" | "user";
 }
 
 interface AuthContextProps {
   user: User | null;
   loading: boolean;
-  createUser: (name: string, email: string, password: string , imageURL: string) => Promise<void>;
-  signIn: (email: string, password: string) => Promise<void>;
+  createUser: (name: string, emailOrPhone: string , password: string ) => Promise<void>;
+  signIn: (identifier: string, password: string) => Promise<void>;
   logOut: () => void;
 }
 
@@ -32,39 +33,64 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const showToast = useToast();
-
+  
+  
   const API_URL = process.env.NEXT_PUBLIC_API_URL ;
 
-  const createUser = async (name: string, email: string, password: string, imageURL: string): Promise<void> => {
+  const createUser = async (name: string, emailOrPhone: string , password: string, ): Promise<void> => {
+    const isPhone = /^01[35789]\d{8}$/.test(emailOrPhone);
+   
     setLoading(true);
     try {
-      const response = await axios.post(`${API_URL}/api/auth/register`, { name, email, password , imageURL });
-      setUser(response.data);
+      if(isPhone)
+      {
+        const response = await axios.post(`${API_URL}/api/users/register`, { name, phone: emailOrPhone , password });
+        localStorage.setItem("token", response.data.token); 
+        setUser(response.data?.data);
+        
+      }
+      else
+      {
+        const response = await axios.post(`${API_URL}/api/users/register`, { name, email: emailOrPhone , password });
+        localStorage.setItem("token", response.data.token); 
+        setUser(response.data?.data);
+        
+      }
+      
     } catch (error) {
-      console.error("Registration error:", error);
+    
+      throw error;
+      
     } finally {
       setLoading(false);
     }
   };
 
-  const signIn = async (email: string, password: string): Promise<void> => {
+  const signIn = async (identifier: string, password: string): Promise<void> => {
     setLoading(true);
     try {
-      const response = await axios.post(`${API_URL}/api/auth/login`, { email, password });
+      const response = await axios.post(`${API_URL}/api/users/login`, { identifier, password });
       localStorage.setItem("token", response.data.token); 
-      setUser(response.data);
+      setUser(response.data?.data);
     } catch (error) {
-      console.error("Login error:", error);
+      throw error;
     } finally {
       setLoading(false);
     }
   };
 
   const logOut = () => {
-    localStorage.removeItem("token");
-    showToast(  "success" ,"Logged out successfully");
-    setUser(null);
-    router.push("/authentication");
+    try{
+      localStorage.removeItem("token");
+      showToast(  "success" ,"Logged out successfully");
+      setUser(null);
+      router.push("/authentication");
+    }
+    catch(error)
+    {
+      throw error;
+    }
+  
   };
 
   useEffect(() => {
@@ -72,13 +98,22 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       const token = localStorage.getItem("token");
       if (token) {
         try {
-          const response = await axios.get(`${API_URL}/api/auth/me`, {
+          setLoading(true);
+          const response = await axios.get(`${API_URL}/api/users/auth/me`, {
             headers: { Authorization: `Bearer ${token}` },
           });
           setUser(response.data);
         } catch (error) {
-          console.error("Token validation error:", error);
+
+          if (axios.isAxiosError(error)) {
+            showToast("error", (error.response?.data as { message?: string })?.message || "An error occurred");
+          } else if (error instanceof Error) {
+            showToast("error", error.message);
+          } else {
+            showToast("error", "An unknown error occurred while login");
+          }
           logOut();
+          setLoading(false);
         }
       }
       setLoading(false);
