@@ -1,3 +1,4 @@
+import UserList from "@/components/user/UserShow";
 
 
 
@@ -7,8 +8,8 @@ export default function page() {
   
  
   return (
-    <div>
-      working on it . all users
+    <div className=" md:min-h-96">
+     <UserList/>
     </div>
   );
 }

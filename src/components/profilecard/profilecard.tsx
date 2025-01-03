@@ -1,3 +1,4 @@
+'use client'
 import * as React from "react";
 
 import {
@@ -11,17 +12,18 @@ import {
 
   import { Avatar, AvatarImage } from "@/components/ui/avatar";
   import { Button } from "../ui/button";
+import Link from "next/link";
   interface ProfileCardProps{
-    id: number;
+    id: string;
     name: string;
-    posterAvatar: string;
+    posterAvatar?: string;
   }
 
   export default function ProfileCard(
     {
         id,
         name,
-        posterAvatar,
+        
 
     }: ProfileCardProps
   ){
@@ -34,16 +36,18 @@ import {
                     flex items-center justify-center hover:bg-green-500 cursor-pointer"
           >
             <Avatar>
-              <AvatarImage src={posterAvatar} alt="@shadcn" />
+              <AvatarImage src="https://i.ibb.co.com/TtPv8g8/micro-service-logo.jpg" alt="@shadcn" />
             </Avatar>
           </div>
           <div className="grow">
             <p className="text-xl text-gray-800">{name}</p>
-            <Button>See Profile</Button>
+            <Link href={`/user/${id}`}>
+            <Button className=" bg-sky-400 hover:scale-105">See Profile</Button>
+            </Link>
           </div>
 
         </div>
       </CardHeader> 
-              </Card>
+      </Card>
     )
   }
