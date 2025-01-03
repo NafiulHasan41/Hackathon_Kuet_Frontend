@@ -33,6 +33,15 @@ export default function Navigation() {
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
+
+            <NavigationMenuItem>
+              <Link href="/chat" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                 Bangla Chat
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+
           </NavigationMenuList>
         </NavigationMenu>
       )

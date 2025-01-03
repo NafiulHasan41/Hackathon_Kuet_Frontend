@@ -29,15 +29,10 @@ const Footer: React.FC = () => {
               <Link href="/" className="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">
                 Home
               </Link>
-              <Link href="/services" className="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">
-                Services
+              <Link href="/all-users" className="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">
+                All users
               </Link>
-              <Link href="/about" className="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">
-                About Us
-              </Link>
-              <Link href="#" className="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">
-                Contact
-              </Link>
+            
             </div>
           </div>
           <div>
@@ -62,7 +57,7 @@ const Footer: React.FC = () => {
         <div className="flex flex-col gap-4 md:flex-row items-center justify-between">
           <Link href="/">
             <Image
-              src="https://i.ibb.co.com/w4yW08H/banner-micro1.jpg"
+              src="https://i.ibb.co.com/TtPv8g8/micro-service-logo.jpg"
               alt="Your Company Logo"
               width={150}
               height={150}
@@ -71,7 +66,7 @@ const Footer: React.FC = () => {
           </Link>
           <div>
             <p className="text-sm text-gray-800 dark:text-gray-300">
-              © 2024 Micro Service. All rights reserved.
+              © 2024 Vocabulary. All rights reserved.
             </p>
           </div>
           <div className="flex -mx-2">

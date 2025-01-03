@@ -119,12 +119,21 @@ const UserProfile = () => {
                     </Link>
                    
                 </DropdownMenuItem>
+                <DropdownMenuItem>
+                    <Link href="/chat">
+                    <div className="flex items-center space-x-2">
+                         <FcAbout />
+                        <span>Bangla Chat</span>
+                    </div>
+                    </Link>
+                   
+                </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 </div>
                 
                 {/* Menu Items */}
                 <DropdownMenuItem>
-                    <Link href={"/dashboard/user"}>
+                    <Link href={"/dashboard"}>
                     <div className="flex items-center space-x-2">
                          <MdDashboard />
                         <span>Dashboard</span>
