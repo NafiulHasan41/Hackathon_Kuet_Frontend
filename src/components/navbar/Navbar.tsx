@@ -23,7 +23,7 @@ export default function Navbar() {
       <div className=' flex  items-center gap-1 pr-2  '>
         <Image src={user?.imageURL ? user.imageURL : "https://i.ibb.co.com/TtPv8g8/micro-service-logo.jpg"} alt="logo" width={70} height={70} className=' hidden md:block rounded-full mr-2'/>
         <Image src={user?.imageURL ? user.imageURL : "https://i.ibb.co.com/TtPv8g8/micro-service-logo.jpg"} alt="logo" width={50} height={50} className=' md:hidden rounded-full h-10 w-16'/>
-        <h1 className='text-black font-bold text-[16px] hidden md:block '>Micro Service</h1>
+        <h1 className='text-black font-bold text-[16px] hidden md:block '>Vocabulary</h1>
       </div>
       </Link>
       <div className=' hidden md:block'>
