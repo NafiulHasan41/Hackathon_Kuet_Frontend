@@ -111,19 +111,19 @@ const UserProfile = () => {
                    
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                    <Link href="/jobs">
+                    <Link href="/all-users">
                     <div className="flex items-center space-x-2">
-                         <SiFreelancer />
-                        <span>Browse Job</span>
+                         <FcAbout />
+                        <span>All users</span>
                     </div>
                     </Link>
                    
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                    <Link href="/about">
+                    <Link href="/chat">
                     <div className="flex items-center space-x-2">
                          <FcAbout />
-                        <span>About us</span>
+                        <span>Bangla Chat</span>
                     </div>
                     </Link>
                    
@@ -133,19 +133,13 @@ const UserProfile = () => {
                 
                 {/* Menu Items */}
                 <DropdownMenuItem>
-                    <Link href={"/dashboard/user"}>
+                    <Link href={"/dashboard"}>
                     <div className="flex items-center space-x-2">
                          <MdDashboard />
                         <span>Dashboard</span>
                     </div>
                     </Link>
                    
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                    <div className="flex items-center space-x-2">
-                        <CgProfile />
-                        <span>Profile</span>
-                    </div>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                     <button onClick={() => handleLogout()}>

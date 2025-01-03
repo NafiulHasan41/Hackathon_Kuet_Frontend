@@ -25,33 +25,23 @@ export default function Navigation() {
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
+                
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Find Work</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid gap-3 p-4 md:w-[300px] grid-cols-1 ">
-                 <li>
-                    <Link href="/jobs" passHref>
-                      <div className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                        <div className="text-sm font-medium leading-none">Browse Jobs</div>
-                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                          Find the right job for you
-                        </p>
-                      </div>
-                    </Link>
-                  </li>
-                 
-          
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-          
-            <NavigationMenuItem>
-              <Link href="/about" legacyBehavior passHref>
+              <Link href="/all-users" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                 About us
+                 All Users
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
+
+            <NavigationMenuItem>
+              <Link href="/chat" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                 Bangla Chat
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+
           </NavigationMenuList>
         </NavigationMenu>
       )
