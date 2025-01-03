@@ -111,19 +111,10 @@ const UserProfile = () => {
                    
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                    <Link href="/jobs">
-                    <div className="flex items-center space-x-2">
-                         <SiFreelancer />
-                        <span>Browse Job</span>
-                    </div>
-                    </Link>
-                   
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                    <Link href="/about">
+                    <Link href="/all-users">
                     <div className="flex items-center space-x-2">
                          <FcAbout />
-                        <span>About us</span>
+                        <span>All users</span>
                     </div>
                     </Link>
                    
@@ -140,12 +131,6 @@ const UserProfile = () => {
                     </div>
                     </Link>
                    
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                    <div className="flex items-center space-x-2">
-                        <CgProfile />
-                        <span>Profile</span>
-                    </div>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                     <button onClick={() => handleLogout()}>
