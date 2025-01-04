@@ -1,36 +1,183 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vocabulary Frontend
 
-## Getting Started
+## Overview
+The Vocabulary Frontend is a web application designed to facilitate Banglish-to-Bangla conversion, integrated with additional features such as a chat option. The project leverages modern web development tools and frameworks, including:
 
-First, run the development server:
+- **Next.js** for server-side rendering and frontend development.
+- **TypeScript** for type-safe programming.
+- **shadcn/ui** for sleek and responsive UI components.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Key Features
+- **Banglish-to-Bangla Conversion**: Efficiently converts transliterated Banglish text into proper Bangla.
+- **Chat Feature**: Provides real-time communication capabilities.
+- **PDF Management**: Tools to manage and display PDFs.
+- **User Management**: Displays user data and supports individual user pages.
+
+---
+
+## Project Structure
+Below is an overview of the project's file structure:
+
+```
+.DS_Store
+.env
+.gitignore
+.next/
+    app-build-manifest.json
+    build-manifest.json
+    cache/
+        images/
+        swc/
+        webpack/
+    fallback-build-manifest.json
+    package.json
+    react-loadable-manifest.json
+    server/
+        _error.js
+        app/
+        app-paths-manifest.json
+        app/
+            dashboard/
+                page.js
+                pdf-manage/
+                    page.js
+            all-users/
+                page.js
+            user/
+                [id]/
+                    page.js
+            page.js
+        vendor-chunks/
+            tailwind-merge.js
+            mime-db.js
+            @radix-ui.js
+            performance-now.js
+    static/
+        chunks/
+            app/
+                page.js
+            pages/
+                _app.js
+                _document.js
+        development/
+            _buildManifest.js
+    trace
+    types/
+components.json
+next-env.d.ts
+next.config.mjs
+package.json
+postcss.config.mjs
+public/
+    .DS_Store
+    fonts/
+README.md
+src/
+    .DS_Store
+    app/
+        globals.css
+        layout.tsx
+    components/
+        navbar/
+            Navigation.tsx
+            Navbar.tsx
+        pdf/
+            PdfManagement.tsx
+        ui/
+            navigation-menu.tsx
+            skeleton.tsx
+            toaster.tsx
+        user/
+            Search.tsx
+            ShowPdf.tsx
+            UserShow.tsx
+        footer/
+            Footer.tsx
+        converter/
+            Convert.tsx
+    hooks/
+    lib/
+    provider/
+        AuthProvider.tsx
+        PrivateRoute.tsx
+tailwind.config.ts
+tsconfig.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Prerequisites
+- **Node.js** (v16 or higher)
+- **npm** or **yarn** package manager
 
-## Learn More
+### Steps
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd vocabulary-frontend
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Configure environment variables:
+   Create a `.env` file in the root directory and populate it with required environment variables. Use `.env.example` as a reference if available.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. Start the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-## Deploy on Vercel
+5. Open the application in your browser at `http://localhost:3000`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Scripts
+- **`dev`**: Starts the development server.
+- **`build`**: Builds the application for production.
+- **`start`**: Starts the production server.
+- **`lint`**: Lints the codebase for errors.
+
+---
+
+## Tech Stack
+- **Frontend**: Next.js, TypeScript, shadcn/ui
+- **Styling**: Tailwind CSS
+- **Authentication**: Custom implementation with `AuthProvider`
+- **State Management**: Context API
+
+---
+
+## Contributing
+1. Fork the repository.
+2. Create a new branch for your feature/fix:
+   ```bash
+   git checkout -b feature-name
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "Add new feature"
+   ```
+4. Push the branch:
+   ```bash
+   git push origin feature-name
+   ```
+5. Open a pull request.
+
+---
+
+## License
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
+
+---
+
+## Contact
+For any inquiries or support, please reach out to the maintainer via [email@example.com].
