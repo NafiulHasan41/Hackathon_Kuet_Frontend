@@ -1,4 +1,5 @@
 import ShowPdf from "@/components/user/ShowPdf";
+import PrivateRoute from "@/provider/PrivateRoute";
 
 interface PageProps {
   params: {
@@ -11,8 +12,10 @@ export default function Page({ params }: PageProps) {
 
   return (
     <>
-      <div>
+      <div className=" p-5 md:p-8 max-w-screen-lg mx-auto  rounded-lg ">
+        <PrivateRoute>
         <ShowPdf id={id} />
+        </PrivateRoute>
       </div>
     </>
   );
