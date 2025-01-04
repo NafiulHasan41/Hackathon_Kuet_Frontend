@@ -7,6 +7,9 @@ import axios from "axios";
 import useToast from "@/hooks/useToast";
 import useAxios from "@/hooks/useAxios";
 import { AuthContext } from "@/provider/AuthProvider";
+import { useUpdateMetrics } from "@/hooks/useUpdateMetrics";
+
+
 
 // Get the API key from environment variables
 const key = process.env.NEXT_PUBLIC_API_GEMINI_URL || " ";
@@ -18,6 +21,7 @@ export default function Convert() {
     const [pdfLoading, setPdfLoading] = useState(false);
 
     const showToast = useToast();
+    const updatedMetric = useUpdateMetrics();
     const axiosInstance= useAxios();
     const authContext = useContext(AuthContext);
     if (!authContext) {
@@ -40,8 +44,9 @@ export default function Convert() {
             // Use the model to generate content based on the prompt
             const result = await model.generateContent(prompt);
             const translatedText = result.response.text(); // Extract the translated text from the result
-
             setBanglaOutput(translatedText);
+            updatedMetric('translate', banglishText.length);
+
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 showToast("error", (error.response?.data as { message?: string })?.message || "An error occurred");
@@ -58,6 +63,7 @@ export default function Convert() {
 
     //handle export pdf 
     const handleExportPdf = async () => {
+        
         if(banglaOutput === "") {
             showToast("error", "Please convert Banglish to Bangla first");
             return;
@@ -69,6 +75,7 @@ export default function Convert() {
                 posterId: user?.id
              });
                showToast("success", "PDF exported successfully");
+              updatedMetric("write_story",1);
 
         }
         catch (error) {

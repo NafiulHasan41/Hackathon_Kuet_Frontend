@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "../ui/button";
 import { GoogleGenerativeAI } from "@google/generative-ai"; // Import the SDK
+import { useUpdateMetrics } from "@/hooks/useUpdateMetrics";
 
 // Get the API key from environment variables
 const key = process.env.NEXT_PUBLIC_API_GEMINI_URL || " ";
@@ -16,6 +17,8 @@ export default function Chatbot() {
     const [userQuery, setUserQuery] = useState(""); // User input
     const [messages, setMessages] = useState<Message[]>([]); // Chat history
     const [isLoading, setIsLoading] = useState(false); // Loading state
+
+    const updatedMetric = useUpdateMetrics();
 
     const chatContainerRef = useRef<HTMLDivElement | null>(null); // Reference for the chat container
 
@@ -62,6 +65,7 @@ export default function Chatbot() {
             // Use the model to generate a response to the query
             const result = await model.generateContent(prompt);
             const responseText = result.response.text(); // Extract the response text from the result
+            updatedMetric("chatbot_interaction",1)
 
             // Add the bot's response to the chat history
             setMessages((prevMessages) => [
